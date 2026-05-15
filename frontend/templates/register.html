@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="display: flex; align-items: center; justify-content: center; height: 80vh;">
+    <div class="glass-card" style="width: 100%; max-width: 450px;">
+        <h2 style="margin-bottom: 2rem; text-align: center;">Create Account</h2>
+        <form method="POST">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="username" required placeholder="Choose a username">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" required placeholder="Create a password">
+            </div>
+            <div class="form-group">
+                <label>I am a...</label>
+                <select name="role">
+                    <option value="user">User (Needs Help)</option>
+                    <option value="mechanic">Mechanic (Wants to Help)</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-glow" style="width: 100%;">Register</button>
+        </form>
+        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-dim);">
+            Already have an account? <a href="{{ url_for('login') }}" style="color: var(--accent-blue);">Login here</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

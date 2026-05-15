@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 80vh; text-align: center; padding: 0 10%;">
+    <h1 style="font-size: 4rem; font-weight: 800; margin-bottom: 1rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Fast, Reliable On-Road Assistance
+    </h1>
+    <p style="font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin-bottom: 2rem;">
+        Get back on the road in minutes. Connect with professional mechanics nearby for tyre punctures, engine issues, fuel delivery, and more.
+    </p>
+    <div style="display: flex; gap: 1.5rem;">
+        <a href="{{ url_for('register') }}" class="btn-glow">Get Started</a>
+        <a href="{{ url_for('login') }}" class="btn-glow" style="background: transparent; border: 1px solid var(--accent-blue);">Login</a>
+    </div>
+</div>
+{% endblock %}

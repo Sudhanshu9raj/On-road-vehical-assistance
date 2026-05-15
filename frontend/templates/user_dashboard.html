@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div id="map"></div>
+    
+    <div class="dashboard-content">
+        <!-- Main Content Area -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <!-- History Section moved here for better layout -->
+            <div class="glass-card" style="flex: 1; min-height: 400px; overflow-y: auto;">
+                <h3>Request History</h3>
+                <div id="history-list" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 10px;">
+                    <!-- History items will be injected here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <!-- New Request Section -->
+        <div class="glass-card" id="request-form-section">
+            <h3>Breakdown Request</h3>
+            <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1rem;">Select your issue to find nearby mechanics.</p>
+            <div class="form-group">
+                <label>Issue Type</label>
+                <select id="issue-type">
+                    <option value="Tyre puncture">Tyre puncture</option>
+                    <option value="Engine issue">Engine issue</option>
+                    <option value="Fuel issue">Fuel issue</option>
+                    <option value="Battery issue">Battery issue</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <button id="btn-request" class="btn-glow" style="width: 100%;">Request Assistance</button>
+        </div>
+
+        <!-- Active Request Section -->
+        <div class="glass-card" id="active-request-section" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 id="active-issue-title">Active Request</h3>
+                <span id="active-status" class="status-badge status-pending">Pending</span>
+            </div>
+            <p id="mechanic-info" style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 1rem;">Searching for mechanics...</p>
+            
+            <div id="chat-box" class="chat-container" style="display: none; height: 300px;">
+                <div class="chat-header">Live Chat</div>
+                <div id="chat-messages" class="chat-messages"></div>
+                <div class="chat-input">
+                    <input type="text" id="chat-msg-input" placeholder="Type message...">
+                    <button id="btn-chat-send" class="btn-glow" style="padding: 5px 15px;">Send</button>
+                </div>
+            </div>
+
+            <button id="btn-delete-request" class="btn-glow" style="width: 100%; margin-top: 1rem; background: rgba(255, 75, 43, 0.2); color: var(--status-rejected); border: 1px solid var(--status-rejected);">Cancel Request</button>
+        </div>
+
+        </div> <!-- End Sidebar -->
+    </div> <!-- End Dashboard Content -->
+</div> <!-- End Dashboard Container -->
+
+<script>
+    const USER_ID = {{ current_user.id }};
+    const USER_ROLE = 'user';
+</script>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div id="map"></div>
+    
+    <div class="dashboard-content">
+        <!-- Main Content Area -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <!-- Nearby Requests Section -->
+            <div class="glass-card" id="nearby-section" style="flex: 1; min-height: 400px; overflow-y: auto;">
+                <h3>Nearby Requests</h3>
+                <div id="nearby-list" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Nearby items will be injected here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <!-- Status Panel -->
+        <div class="glass-card" id="status-panel">
+            <h3>Mechanic Dashboard</h3>
+            <p id="availability-status" style="color: var(--status-completed); font-size: 0.9rem; margin-top: 0.5rem;">● Available for requests</p>
+        </div>
+
+        <!-- Active Task Section -->
+        <div class="glass-card" id="active-task-section" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 id="task-issue-title">Active Task</h3>
+                <span id="task-status" class="status-badge status-accepted">Accepted</span>
+            </div>
+            <p id="user-info" style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 1rem;">User: Loading...</p>
+            
+            <div class="form-group">
+                <label>Update Status</label>
+                <select id="status-update-select">
+                    <option value="accepted">Accepted</option>
+                    <option value="on_way">On the Way</option>
+                    <option value="reached">Reached Location</option>
+                    <option value="completed">Task Completed</option>
+                </select>
+            </div>
+
+            <div id="chat-box" class="chat-container" style="height: 300px; margin-bottom: 1rem;">
+                <div class="chat-header">Chat with User</div>
+                <div id="chat-messages" class="chat-messages"></div>
+                <div class="chat-input">
+                    <input type="text" id="chat-msg-input" placeholder="Type message...">
+                    <button id="btn-chat-send" class="btn-glow" style="padding: 5px 15px;">Send</button>
+                </div>
+            </div>
+        </div>
+
+        </div> <!-- End Sidebar -->
+    </div> <!-- End Dashboard Content -->
+</div> <!-- End Dashboard Container -->
+
+<script>
+    const USER_ID = {{ current_user.id }};
+    const USER_ROLE = 'mechanic';
+</script>
+{% endblock %}
